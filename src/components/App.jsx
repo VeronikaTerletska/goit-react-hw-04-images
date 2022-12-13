@@ -135,9 +135,7 @@ export class App extends Component {
           <Button title="Load more" onClick={this.loadMoreImages} />
         )}
         {showModal && (
-          <Modal onClose={this.togleModal}>
-            <img src={largeImageURL} alt="" />
-          </Modal>
+          <Modal onClose={this.togleModal} largeImage={largeImageURL} />
         )}
 
         <ToastContainer autoClose={3000} />
