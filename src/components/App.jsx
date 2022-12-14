@@ -19,7 +19,7 @@ export class App extends Component {
     loading: false,
     page: 1,
     // perPage: 12,
-    pictures: [],
+    images: [],
     error: null,
     showModal: false,
     // largeImageURL: '',
@@ -42,7 +42,7 @@ export class App extends Component {
     this.setState({
       name,
       page: 1,
-      pictures: [],
+      images: [],
     });
   };
 
@@ -53,7 +53,7 @@ export class App extends Component {
     try {
       const { data } = await fetchPictures(name, page);
       this.setState({
-        pictures: [...this.state.pictures, ...data.hits],
+        images: [...this.state.images, ...data.hits],
         totalImages: data.totalHits,
       });
 
@@ -91,7 +91,7 @@ export class App extends Component {
   };
 
   render() {
-    const { pictures, loading, showModal, largeImageURL, totalImages, page } =
+    const { images, loading, showModal, largeImageURL, totalImages, page } =
       this.state;
 
     const restOfImages = totalImages - page * 12;
@@ -111,7 +111,7 @@ export class App extends Component {
       >
         <Searchbar onSubmitForm={this.handleFormSubmit} />
         <ToastContainer autoClose={3000} />
-        {pictures.length <= 0 && !loading && (
+        {images.length <= 0 && !loading && (
           <p
             style={{
               height: '100vh',
@@ -127,16 +127,16 @@ export class App extends Component {
           </p>
         )}
 
-        {pictures.length > 0 && (
+        {images.length > 0 && (
           <ImageGallery
-            pictures={pictures}
+            images={images}
             showModal={this.togleModal}
             imgInfo={this.imgInfo}
           />
         )}
         {loading && <Loader loading={loading} />}
 
-        {pictures.length > 0 && restOfImages > 0 && (
+        {images.length > 0 && restOfImages > 0 && (
           <Button title="Load more" onClick={this.loadMoreImages} />
         )}
         {showModal && (
