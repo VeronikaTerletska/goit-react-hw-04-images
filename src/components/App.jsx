@@ -5,9 +5,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
-import { fetchPictures } from './FetchPictures/FetchPictures';
+import { fetchPictures } from 'FetchPictures/FetchPictures';
 import { Searchbar } from './Searchbar/Searchbar';
+import { Loader } from './Loader/Loader';
 import { Button } from './Button/Button';
+
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Modal } from './Modal/Modal';
 
@@ -16,12 +18,12 @@ export class App extends Component {
     name: '',
     loading: false,
     page: 1,
-    perPage: 12,
+    // perPage: 12,
     pictures: [],
     error: null,
     showModal: false,
-    largeImageURL: '',
-    alt: '',
+    // largeImageURL: '',
+    // alt: '',
     totalImages: 0,
   };
 
@@ -108,6 +110,7 @@ export class App extends Component {
         }}
       >
         <Searchbar onSubmitForm={this.handleFormSubmit} />
+        <ToastContainer autoClose={3000} />
         {pictures.length <= 0 && !loading && (
           <p
             style={{
@@ -131,6 +134,8 @@ export class App extends Component {
             imgInfo={this.imgInfo}
           />
         )}
+        {loading && <Loader loading={loading} />}
+
         {pictures.length > 0 && restOfImages > 0 && (
           <Button title="Load more" onClick={this.loadMoreImages} />
         )}
@@ -138,7 +143,6 @@ export class App extends Component {
           <Modal onClose={this.togleModal} largeImage={largeImageURL} />
         )}
 
-        <ToastContainer autoClose={3000} />
         <GlobalStyle />
       </div>
     );

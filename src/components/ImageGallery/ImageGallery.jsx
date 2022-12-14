@@ -28,4 +28,6 @@ ImageGallery.propTypes = {
       tags: PropTypes.string,
     })
   ),
+  showModal: PropTypes.func,
+  imgInfo: PropTypes.func,
 };

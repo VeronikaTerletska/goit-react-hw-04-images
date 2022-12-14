@@ -11,6 +11,10 @@ import {
 } from './Searchbar.styled';
 
 export class Searchbar extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func,
+  };
+
   state = {
     name: '',
     pictures: [],
@@ -57,8 +61,3 @@ export class Searchbar extends Component {
     );
   }
 }
-Searchbar.propTypes = {
-  name: PropTypes.string,
-  handleSubmit: PropTypes.func,
-  handleInputChange: PropTypes.func,
-};

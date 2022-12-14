@@ -7,11 +7,17 @@ export const Loader = ({ loading }) => (
       height="80"
       width="80"
       radius="9"
-      color="blue"
+      color="#2196f3"
       ariaLabel="three-dots-loading"
-      wrapperStyle={{}}
+      wrapperStyle={{
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
       wrapperClassName=""
-      visible={loading}
+      visible={loading && true}
     />
   </div>
 );

@@ -10,6 +10,6 @@ export const fetchPictures = (name, page = 1) => {
   );
 };
 fetchPictures.propTypes = {
-  name: PropTypes.string,
-  page: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
 };
